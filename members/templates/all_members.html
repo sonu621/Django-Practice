@@ -1,19 +1,38 @@
 {% extends "master.html" %}
 
 {% block title %}
-  My Tennis Club - List of all members
+My Tennis Club - List of all members
 {% endblock %}
-
 
 {% block content %}
 
-  <p><a href="/">HOME</a></p>
+<p><a href="/">HOME</a></p>
 
-  <h1>Members</h1>
-  
-  <ul>
+<h1>Members</h1>
+
+<table border="1" cellpadding="10">
+    <tr>
+        <th>ID</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Phone</th>
+        <th>Join Date</th>
+        <th>Details</th>
+    </tr>
+
     {% for x in mymembers %}
-      <li><a href="details/{{ x.id }}">{{ x.firstname }} {{ x.lastname }}</a></li>
+    <tr>
+        <td>{{ x.id }}</td>
+        <td>{{ x.firstname }}</td>
+        <td>{{ x.lastname }}</td>
+        <td>{{x.phone}}</td>
+        <td>{{x.joined_date}}</td>
+        <td>
+            <a href="/members/details/{{ x.id }}">View</a>
+        </td>
+    </tr>
     {% endfor %}
-  </ul>
+
+</table>
+
 {% endblock %}
